@@ -1,0 +1,37 @@
+import time
+
+def build_plus(parts):
+    result = ""
+
+    for part in parts:
+        result += part + ";"
+
+    return result
+
+
+def build_join(parts):
+    return ";".join(parts) + ";"
+
+
+def build_fstrings(parts):
+    return "".join(f"{part};" for part in parts)
+
+
+items = ["Apple", "Banana", "Orange", "Mango"]
+
+start = time.perf_counter()
+a = build_plus(items)
+print("Plus:", a)
+print("Time:", time.perf_counter() - start)
+
+start = time.perf_counter()
+b = build_join(items)
+print("Join:", b)
+print("Time:", time.perf_counter() - start)
+
+start = time.perf_counter()
+c = build_fstrings(items)
+print("F-string:", c)
+print("Time:", time.perf_counter() - start)
+
+print("All outputs equal:", a == b == c)
