@@ -1,0 +1,18 @@
+def subsidy(units, ration_card, elderly_over_80):
+    if units <= 100:
+        return "FULL"
+    elif units <= 200:
+        if ration_card:
+            return "PARTIAL"
+        else:
+            return "NONE"
+    else:
+        if elderly_over_80:
+            return "SPECIAL"
+        else:
+            return "NONE"
+
+
+print(subsidy(100, False, False))
+print(subsidy(150, True, False))
+print(subsidy(250, False, True))
