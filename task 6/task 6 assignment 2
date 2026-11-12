@@ -1,0 +1,27 @@
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def ways_memo(n):
+    if n <= 1:
+        return 1
+
+    return ways_memo(n - 1) + ways_memo(n - 2)
+
+
+def ways_iterative(n):
+    if n <= 1:
+        return 1
+
+    previous = 1
+    current = 1
+
+    for i in range(2, n + 1):
+        previous, current = current, previous + current
+
+    return current
+
+
+n = int(input("Enter number: "))
+
+print("Memoized result:", ways_memo(n))
+print("Iterative result:", ways_iterative(n))
