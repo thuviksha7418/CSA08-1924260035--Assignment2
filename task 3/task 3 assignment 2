@@ -1,0 +1,26 @@
+def normalise(text):
+    return text.strip().replace(" ", "").replace("-", "").upper()
+
+
+def is_valid(reg):
+    if len(reg) not in (9, 10):
+        return False
+
+    series_length = len(reg) - 8
+
+    return (
+        reg[:2].isalpha()
+        and reg[2:4].isdigit()
+        and reg[4:4 + series_length].isalpha()
+        and reg[-4:].isdigit()
+    )
+
+
+registration = input("Enter vehicle registration number: ")
+
+registration = normalise(registration)
+
+if is_valid(registration):
+    print("Valid registration number")
+else:
+    print("Invalid registration number")
