@@ -1,0 +1,27 @@
+def add_item(item, order=None):
+    if order is None:
+        order = []
+
+    order.append(item)
+
+    return order
+
+
+order1 = add_item("Rice")
+print(order1)
+
+order2 = add_item("Sambar", order1)
+print(order2)
+
+
+def bill(amount, gst_rate=0.05):
+    gst = amount * gst_rate
+    total = amount + gst
+
+    return total, gst
+
+
+total, gst = bill(200)
+
+print("GST:", gst)
+print("Total:", total)
